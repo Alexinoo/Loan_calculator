@@ -12,10 +12,7 @@
 
     <!-- JQuery UI css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
-
-    <!-- JQuery Datatable CSS -->
-    <!-- <link rel="stylesheet" href="././css/jqwidgets/jqx.base.css"> -->
-
+ 
     <!-- JQuery Datatable CSS -->
     <link rel="stylesheet" href="https:////cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
@@ -74,8 +71,13 @@
                          <input type="text" name="interest_type" id="interest_type" class="form-control autocomplete" >
                     </div> 
                 </div>                  
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary " >Calculate</button>
+                <div class="form-group  d-flex align-items-center justify-content-evenly">
+                    <div class="calculate-btn">
+                    <button type="submit" class="btn btn-primary calculate " >Calculate</button>
+                    </div>
+                    <div class="ml-5">
+                     <a href="#" onClick="location.reload()">New calculation</a>
+                     </div>
                 </div>              
             </form>
         </div>
@@ -116,7 +118,7 @@
                 </tr>
             </thead>               
             </table>
-            </div>
+            </div>           
         </div>
            
         </div> 
@@ -129,6 +131,8 @@
   <div class="alert_div">
 	<p id="alert_message"></p>
 </div>
+
+
     
     <!-- Bootstrap min bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -149,11 +153,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
 
-
-
-
-
-
     <!-- Local JS Files -->
     <script src="./js/jquery.number.min.js"></script>
     <script src="./js/common_functions.js"></script>
@@ -161,5 +160,35 @@
 
    <!-- Main JS File -->
     <script src="./js/main.js"></script>
+
+    <!-- Send Email -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emailModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
   </body>
 </html>

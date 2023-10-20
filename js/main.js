@@ -138,10 +138,7 @@ $(document).ready(() => {
             interest_type,
           } = value;
 
-          var rows = `
-          <div class="wrapper">
-          <button class="btn btn-primary" id="email" onclick="Email_schedule(this)"><i class="fa fa-envelope"></i> Email</button>
-          </div>`;
+          var rows = '';
 
           if (bank === 'Bank A') {
             let balance = loan_amount;
@@ -207,7 +204,7 @@ $(document).ready(() => {
           } else {
             var rows = '';
             let balance = loan_amount;
-            rows += `<br><br><h5 class="text-center">${bank}</h5>
+            rows += `<br><h5 class="text-center">${bank}</h5>
                             <h6>Loan Summary</h6>
                             <hr>
                             <p class ="bold">Amount Borrowed : <span class="amount_borrowed">${loan_amount}</span> </p>
@@ -269,6 +266,7 @@ $(document).ready(() => {
 
         // Clear Fields
         $('#myForm')[0].reset();
+        $('.calculate').hide();
       }) //.then
       .catch((error) => openalert(error));
   });
@@ -308,3 +306,19 @@ function loadDataBankB(arr) {
     buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'],
   });
 }
+
+const Email_schedule = (obj) => {
+  var table = $(obj).siblings('table').html();
+  $.ajax({
+    url: 'mypage.php',
+    method: 'POST',
+    data: { data: table },
+    dataType: 'html',
+    success: function (data) {
+      openalert(data);
+    },
+    error: function (error) {
+      openalert(error);
+    },
+  });
+};
